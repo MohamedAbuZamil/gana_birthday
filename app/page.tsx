@@ -40,6 +40,11 @@ export default function Home() {
       <div className="grid" />
       <div className="glow glow-left" />
       <div className="glow glow-right" />
+      <div className="tooth-rain" aria-hidden="true">
+        {Array.from({ length: 18 }, (_, index) => (
+          <span key={index} style={{ "--i": index } as React.CSSProperties}>{"🦷"}</span>
+        ))}
+      </div>
 
       <header className="topbar">
         <span className="brand-mark"><b>GW</b><i /></span>
@@ -49,22 +54,23 @@ export default function Home() {
 
       <section className="hero" aria-labelledby="title">
         <div className="orbit-badge" aria-hidden="true">
-          <span className="orbit-text">DENTIST • BIRTHDAY • DENTIST • BIRTHDAY •</span>
+          <span className="orbit-text">PRETTY SMILES • BIRTHDAY GIRL •</span>
           <div className="doctor-icon"><b>G</b><span>+</span></div>
         </div>
 
-        <p className="eyebrow"><span>01</span> A BIRTHDAY WORTH WAITING FOR</p>
-        <h1 id="title">SHE MAKES<br /><em>SMILES.</em></h1>
+        <p className="eyebrow"><span>♡</span> COUNTING DOWN TO HER DAY</p>
+        <h1 id="title">PRETTY GIRLS<br /><em>MAKE SMILES.</em></h1>
         <div className="name-row"><span>DR.</span><strong>GANA WAEL</strong></div>
-        <p className="lead">Now we count every second until the world celebrates her.</p>
+        <p className="lead">A little sparkle, a lot of pink, and one very special dentist.</p>
 
         <div className={`countdown ${ready ? "ready" : ""}`} aria-label="Time remaining until Dr. Gana Wael's birthday">
           {units.map((unit, index) => (
             <div className="tooth-unit" key={unit.label}>
               <div className="drop-stage">
-                <div className="tooth-drop" key={unit.value} style={{ "--delay": `${index * 80}ms` } as React.CSSProperties}>
+                <div className="tooth-drop" key={`${unit.label}-${unit.value}`} style={{ "--delay": `${index * 55}ms` } as React.CSSProperties}>
                   <div className="molar">
                     <span className="tooth-shine" />
+                    <span className="tooth-bow">♡</span>
                     <span className="value">{String(unit.value).padStart(2, "0")}</span>
                   </div>
                 </div>
@@ -76,12 +82,12 @@ export default function Home() {
         </div>
 
         <div className="bottom-copy">
-          <span>THE BIG DAY</span><i /><strong>25 — 05</strong><i /><span>KEEP SMILING</span>
+          <span>BIRTHDAY GIRL</span><i /><strong>25 — 05</strong><i /><span>SPARKLE & SMILE</span>
         </div>
       </section>
 
       <footer>
-        <span>BUILT FOR THE DOCTOR WITH THE BRIGHTEST SMILE</span>
+        <span>MADE WITH LOVE FOR THE GIRL WITH THE BRIGHTEST SMILE</span>
         <span className="signature">GANA / 25.05</span>
       </footer>
     </main>
