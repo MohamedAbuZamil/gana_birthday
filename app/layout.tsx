@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Countdown to Dr. Gana's Birthday",
-  description: "عدّ تنازلي مميز لعيد ميلاد د. Gana Wael يوم 25 مايو",
+  title: "Dr. Gana Wael — Birthday Countdown",
+  description: "A bold birthday countdown for Dr. Gana Wael — May 25.",
   icons: { icon: "/favicon.svg", shortcut: "/favicon.svg" },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="ar" dir="rtl"><body>{children}</body></html>;
+  return <html lang="en"><body>{children}</body></html>;
 }
