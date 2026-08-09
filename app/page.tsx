@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 
 const TARGET = new Date("2027-05-25T00:00:00+03:00").getTime();
+const FLOATERS = ["💗", "🦷", "🩺", "👩‍⚕️", "💕", "🦷", "🩺", "💖", "👩‍⚕️", "🦷", "💗", "🩺", "💕", "🦷"];
 
 type Remaining = { days: number; hours: number; minutes: number; seconds: number };
 
@@ -36,60 +37,45 @@ export default function Home() {
 
   return (
     <main>
-      <div className="noise" />
-      <div className="grid" />
-      <div className="glow glow-left" />
-      <div className="glow glow-right" />
-      <div className="tooth-rain" aria-hidden="true">
-        {Array.from({ length: 18 }, (_, index) => (
-          <span key={index} style={{ "--i": index } as React.CSSProperties}>{"🦷"}</span>
+      <div className="soft-glow glow-a" />
+      <div className="soft-glow glow-b" />
+      <div className="floaters" aria-hidden="true">
+        {FLOATERS.map((emoji, index) => (
+          <span key={index} className={`floater floater-${index + 1}`}>{emoji}</span>
         ))}
       </div>
 
-      <header className="topbar">
-        <span className="brand-mark"><b>GW</b><i /></span>
-        <span className="date-code">MAY 25 / 2027</span>
-        <span className="status"><i /> COUNTDOWN LIVE</span>
+      <header>
+        <div className="mini-logo"><span>G</span><b>GANA&apos;S DAY</b></div>
+        <div className="date-chip">25 MAY 2027</div>
       </header>
 
       <section className="hero" aria-labelledby="title">
-        <div className="orbit-badge" aria-hidden="true">
-          <span className="orbit-text">PRETTY SMILES • BIRTHDAY GIRL •</span>
-          <div className="doctor-icon"><b>G</b><span>+</span></div>
+        <p className="eyebrow">THE SWEETEST COUNTDOWN</p>
+
+        <div className="gana-system" aria-hidden="true">
+          <div className="orbit orbit-one"><span>💗</span></div>
+          <div className="orbit orbit-two"><span>🦷</span></div>
+          <div className="orbit orbit-three"><span>✨</span></div>
+          <div className="gana-sun"><small>DR.</small><strong>GANA</strong><i>WAEL</i></div>
         </div>
 
-        <p className="eyebrow"><span>♡</span> COUNTING DOWN TO HER DAY</p>
-        <h1 id="title">PRETTY GIRLS<br /><em>MAKE SMILES.</em></h1>
-        <div className="name-row"><span>DR.</span><strong>GANA WAEL</strong></div>
-        <p className="lead">A little sparkle, a lot of pink, and one very special dentist.</p>
+        <h1 id="title">Her special day is<br /><em>getting closer.</em></h1>
+        <p className="subtitle">For the dentist who makes every smile a little brighter.</p>
 
         <div className={`countdown ${ready ? "ready" : ""}`} aria-label="Time remaining until Dr. Gana Wael's birthday">
-          {units.map((unit, index) => (
-            <div className="tooth-unit" key={unit.label}>
-              <div className="drop-stage">
-                <div className="tooth-drop" key={`${unit.label}-${unit.value}`} style={{ "--delay": `${index * 55}ms` } as React.CSSProperties}>
-                  <div className="molar">
-                    <span className="tooth-shine" />
-                    <span className="tooth-bow">♡</span>
-                    <span className="value">{String(unit.value).padStart(2, "0")}</span>
-                  </div>
-                </div>
-              </div>
-              <span className="unit-label">{unit.label}</span>
-              <span className="unit-index">0{index + 1}</span>
+          {units.map((unit) => (
+            <div className="counter-card" key={unit.label}>
+              <span className="counter-value" key={unit.value}>{String(unit.value).padStart(2, "0")}</span>
+              <span className="counter-label">{unit.label}</span>
             </div>
           ))}
         </div>
 
-        <div className="bottom-copy">
-          <span>BIRTHDAY GIRL</span><i /><strong>25 — 05</strong><i /><span>SPARKLE & SMILE</span>
-        </div>
+        <p className="note"><span>♡</span> Save the date — something beautiful is on its way.</p>
       </section>
 
-      <footer>
-        <span>MADE WITH LOVE FOR THE GIRL WITH THE BRIGHTEST SMILE</span>
-        <span className="signature">GANA / 25.05</span>
-      </footer>
+      <footer><span>MADE WITH LOVE FOR DR. GANA</span><i /><span>25 · 05 · 2027</span></footer>
     </main>
   );
 }
